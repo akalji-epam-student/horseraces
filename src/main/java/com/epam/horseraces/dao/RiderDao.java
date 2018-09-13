@@ -1,4 +1,7 @@
 package com.epam.horseraces.dao;
 
-interface RiderDao {
+import com.epam.horseraces.domain.RiderEntity;
+
+public interface RiderDao {
+    RiderEntity getRandomRider();
 }

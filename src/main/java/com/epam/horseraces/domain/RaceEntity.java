@@ -1,19 +1,24 @@
 package com.epam.horseraces.domain;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class RaceEntity {
     private int id;
     private String name;
-    private RiderEntity rider;
-    private HorseEntity horse;
+    private int distance = 100;
+    private List<Participant> participants;
 
     public RaceEntity() {
+        participants = new ArrayList<>();
     }
 
-    public RaceEntity(int id, String name, RiderEntity rider, HorseEntity horse) {
-        this.id = id;
-        this.name = name;
-        this.rider = rider;
-        this.horse = horse;
+    public void addHorse(HorseEntity horse) {
+        participants.add(new Participant(horse));
     }
 
     /**
@@ -53,38 +58,92 @@ public class RaceEntity {
     }
 
     /**
-     * Getter for rider.
+     * Getter for horses.
      *
-     * @return com.epam.horseraces.domain.RiderEntity
+     * @return java.util.Map<com.epam.horseraces.domain.HorseEntity                                                               ,                                                               java.lang.Integer>
      */
-    public RiderEntity getRider() {
-        return rider;
+    public List<HorseEntity> getHorses() {
+        return participants.stream()
+                .map(Participant::getHorse)
+                .collect(Collectors.toList());
+    }
+
+    public List<Participant> getParticipants() {
+        return participants;
+    }
+
+
+    /**
+     * Getter for distance.
+     *
+     * @return int
+     */
+    public int getDistance() {
+        return distance;
     }
 
     /**
-     * Setter for rider.
+     * Setter for distance.
      *
-     * @param rider value
+     * @param distance value
      */
-    public void setRider(RiderEntity rider) {
-        this.rider = rider;
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 
-    /**
-     * Getter for horse.
-     *
-     * @return com.epam.horseraces.domain.HorseEntity
-     */
-    public HorseEntity getHorse() {
-        return horse;
-    }
+    public class Participant implements Comparable<Participant>, Comparator<Participant> {
+        private HorseEntity horse;
+        private int distance;
 
-    /**
-     * Setter for horse.
-     *
-     * @param horse value
-     */
-    public void setHorse(HorseEntity horse) {
-        this.horse = horse;
+        Participant(HorseEntity horse) {
+            this.horse = horse;
+            this.distance = 0;
+        }
+
+        /**
+         * Getter for horse.
+         *
+         * @return com.epam.horseraces.domain.HorseEntity
+         */
+        public HorseEntity getHorse() {
+            return horse;
+        }
+
+        /**
+         * Setter for horse.
+         *
+         * @param horse value
+         */
+        public void setHorse(HorseEntity horse) {
+            this.horse = horse;
+        }
+
+        /**
+         * Getter for distance.
+         *
+         * @return int
+         */
+        public int getDistance() {
+            return distance;
+        }
+
+        /**
+         * Setter for distance.
+         *
+         * @param distance value
+         */
+        public void setDistance(int distance) {
+            this.distance = distance;
+        }
+
+        @Override
+        public int compareTo(Participant o) {
+            return o.distance-distance;
+        }
+
+        @Override
+        public int compare(Participant o1, Participant o2) {
+            return o2.distance-o1.distance;
+        }
     }
 }

@@ -4,7 +4,154 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="horse" class="com.epam.horseraces.domain.HorseEntity">
+    <bean id="riderEntity" class="com.epam.horseraces.domain.RiderEntity" scope="prototype"/>
+
+    <bean id="breedEntity" class="com.epam.horseraces.domain.BreedEntity" scope="prototype"/>
+
+    <bean id="horseEntity" class="com.epam.horseraces.domain.HorseEntity" scope="prototype"/>
+
+    <bean id="breedDao" class="com.epam.horseraces.dao.impl.BreedDaoHardcodeImpl">
+        <property name="breeds">
+            <list>
+                <bean id="breed" class="com.epam.horseraces.domain.BreedEntity" scope="prototype">
+                    <property name="name" value="Bardigiano"/>
+                </bean>
+                <bean id="breed" class="com.epam.horseraces.domain.BreedEntity" scope="prototype">
+                    <property name="name" value="Banker horse"/>
+                </bean>
+                <bean id="breed" class="com.epam.horseraces.domain.BreedEntity" scope="prototype">
+                    <property name="name" value="Andravida horse"/>
+                </bean>
+                <bean id="breed" class="com.epam.horseraces.domain.BreedEntity" scope="prototype">
+                    <property name="name" value="Danish Warmblood"/>
+                </bean>
+                <bean id="breed" class="com.epam.horseraces.domain.BreedEntity" scope="prototype">
+                    <property name="name" value="Dutch Warmblood"/>
+                </bean>
+                <bean id="breed" class="com.epam.horseraces.domain.BreedEntity" scope="prototype">
+                    <property name="name" value="Freiberger"/>
+                </bean>
+                <bean id="breed" class="com.epam.horseraces.domain.BreedEntity" scope="prototype">
+                    <property name="name" value="Malopolski"/>
+                </bean>
+                <bean id="breed" class="com.epam.horseraces.domain.BreedEntity" scope="prototype">
+                    <property name="name" value="Mangalarga"/>
+                </bean>
+                <bean id="breed" class="com.epam.horseraces.domain.BreedEntity" scope="prototype">
+                    <property name="name" value="Maremmano"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="riderDao" class="com.epam.horseraces.dao.impl.RiderDaoHardcodeImpl">
+        <property name="riders">
+            <list>
+                <bean id="rider" class="com.epam.horseraces.domain.RiderEntity" scope="prototype">
+                    <property name="name" value="Jack Daniels"/>
+                </bean>
+                <bean id="rider" class="com.epam.horseraces.domain.RiderEntity" scope="prototype">
+                    <property name="name" value="Harley Davidson"/>
+                </bean>
+                <bean id="rider" class="com.epam.horseraces.domain.RiderEntity" scope="prototype">
+                    <property name="name" value="Virginia Slims"/>
+                </bean>
+                <bean id="rider" class="com.epam.horseraces.domain.RiderEntity" scope="prototype">
+                    <property name="name" value="Jimmy Jiles"/>
+                </bean>
+                <bean id="rider" class="com.epam.horseraces.domain.RiderEntity" scope="prototype">
+                    <property name="name" value="Big Indian"/>
+                </bean>
+                <bean id="rider" class="com.epam.horseraces.domain.RiderEntity" scope="prototype">
+                    <property name="name" value="Jose Cuervo"/>
+                </bean>
+                <bean id="rider" class="com.epam.horseraces.domain.RiderEntity" scope="prototype">
+                    <property name="name" value="Chance Wilder"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="horseDao" class="com.epam.horseraces.dao.impl.HorseDaoHardcodeImpl">
+        <property name="horses">
+            <list>
+                <bean id="horse" class="com.epam.horseraces.domain.HorseEntity" scope="prototype" init-method="random">
+                    <property name="name" value="Ralph"/>
+                    <property name="riderDao" ref="riderDao"/>
+                    <property name="breedDao" ref="breedDao"/>
+                </bean>
+                <bean id="horse" class="com.epam.horseraces.domain.HorseEntity" scope="prototype" init-method="random">
+                    <property name="name" value="Magavin"/>
+                    <property name="riderDao" ref="riderDao"/>
+                    <property name="breedDao" ref="breedDao"/>
+                </bean>
+                <bean id="horse" class="com.epam.horseraces.domain.HorseEntity" scope="prototype" init-method="random">
+                    <property name="name" value="Harrison"/>
+                    <property name="riderDao" ref="riderDao"/>
+                    <property name="breedDao" ref="breedDao"/>
+                </bean>
+                <bean id="horse" class="com.epam.horseraces.domain.HorseEntity" scope="prototype" init-method="random">
+                    <property name="name" value="Gator"/>
+                    <property name="riderDao" ref="riderDao"/>
+                    <property name="breedDao" ref="breedDao"/>
+                </bean>
+                <bean id="horse" class="com.epam.horseraces.domain.HorseEntity" scope="prototype" init-method="random">
+                    <property name="name" value="Valentine"/>
+                    <property name="riderDao" ref="riderDao"/>
+                    <property name="breedDao" ref="breedDao"/>
+                </bean>
+                <bean id="horse" class="com.epam.horseraces.domain.HorseEntity" scope="prototype" init-method="random">
+                    <property name="name" value="Camoren"/>
+                    <property name="riderDao" ref="riderDao"/>
+                    <property name="breedDao" ref="breedDao"/>
+                </bean>
+                <bean id="horse" class="com.epam.horseraces.domain.HorseEntity" scope="prototype" init-method="random">
+                    <property name="name" value="Tenneche"/>
+                    <property name="riderDao" ref="riderDao"/>
+                    <property name="breedDao" ref="breedDao"/>
+                </bean>
+                <bean id="horse" class="com.epam.horseraces.domain.HorseEntity" scope="prototype" init-method="random">
+                    <property name="name" value="Yentel"/>
+                    <property name="riderDao" ref="riderDao"/>
+                    <property name="breedDao" ref="breedDao"/>
+                </bean>
+                <bean id="horse" class="com.epam.horseraces.domain.HorseEntity" scope="prototype" init-method="random">
+                    <property name="name" value="Esteem"/>
+                    <property name="riderDao" ref="riderDao"/>
+                    <property name="breedDao" ref="breedDao"/>
+                </bean>
+                <bean id="horse" class="com.epam.horseraces.domain.HorseEntity" scope="prototype" init-method="random">
+                    <property name="name" value="Onyx"/>
+                    <property name="riderDao" ref="riderDao"/>
+                    <property name="breedDao" ref="breedDao"/>
+                </bean>
+                <bean id="horse" class="com.epam.horseraces.domain.HorseEntity" scope="prototype" init-method="random">
+                    <property name="name" value="Paddington"/>
+                    <property name="riderDao" ref="riderDao"/>
+                    <property name="breedDao" ref="breedDao"/>
+                </bean>
+                <bean id="horse" class="com.epam.horseraces.domain.HorseEntity" scope="prototype" init-method="random">
+                    <property name="name" value="Infatuation"/>
+                    <property name="riderDao" ref="riderDao"/>
+                    <property name="breedDao" ref="breedDao"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="horseService" class="com.epam.horseraces.service.impl.HorseServiceImpl">
+        <property name="horseDao" ref="horseDao"/>
+    </bean>
+
+    <bean id="breedService" class="com.epam.horseraces.service.impl.BreedServiceImpl">
+        <property name="breedDao" ref="breedDao"/>
+    </bean>
+    <bean id="riderService" class="com.epam.horseraces.service.impl.RiderServiceImpl">
+        <property name="riderDao" ref="riderDao"/>
+    </bean>
+
+    <bean id="raceService" class="com.epam.horseraces.service.impl.RaceServiceImpl">
+        <property name="horseService" ref="horseService"/>
     </bean>
 
 </beans>

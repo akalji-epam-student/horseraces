@@ -1,14 +1,31 @@
 package com.epam.horseraces.domain;
 
+import com.epam.horseraces.dao.BreedDao;
+import com.epam.horseraces.dao.RiderDao;
+
+import java.util.Random;
+
 public class HorseEntity {
     private int id;
     private String name;
     private BreedEntity breed;
+    private RiderEntity rider;
+    private int strength;
 
-    public HorseEntity(int id, String name, BreedEntity breed) {
+    private RiderDao riderDao;
+    private BreedDao breedDao;
+
+    public void random() {
+        this.rider = riderDao.getRandomRider();
+        this.breed = breedDao.getRandomBreed();
+        this.strength = new Random().nextInt(15)+1;
+    }
+
+    public HorseEntity(int id, String name, BreedEntity breed, RiderEntity rider) {
         this.id = id;
         this.name = name;
         this.breed = breed;
+        this.rider = rider;
     }
 
     public HorseEntity() {
@@ -66,5 +83,68 @@ public class HorseEntity {
      */
     public void setBreed(BreedEntity breed) {
         this.breed = breed;
+    }
+
+    /**
+     * Getter for rider.
+     *
+     * @return com.epam.horseraces.domain.RiderEntity
+     */
+    public RiderEntity getRider() {
+        return rider;
+    }
+
+    /**
+     * Setter for rider.
+     *
+     * @param rider value
+     */
+    public void setRider(RiderEntity rider) {
+        this.rider = rider;
+    }
+
+    /**
+     * Setter for riderDao.
+     *
+     * @param riderDao value
+     */
+    public void setRiderDao(RiderDao riderDao) {
+        this.riderDao = riderDao;
+    }
+
+    /**
+     * Setter for breedDao.
+     *
+     * @param breedDao value
+     */
+    public void setBreedDao(BreedDao breedDao) {
+        this.breedDao = breedDao;
+    }
+
+    /**
+     * Getter for strength.
+     *
+     * @return int
+     */
+    public int getStrength() {
+        return strength;
+    }
+
+    /**
+     * Setter for strength.
+     *
+     * @param strength value
+     */
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    @Override
+    public String toString() {
+        return "HorseEntity{" +
+                "name='" + name + '\'' +
+                ", breed=" + breed.getName() +
+                ", rider=" + rider.getName() +
+                '}';
     }
 }

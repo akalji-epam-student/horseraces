@@ -1,10 +1,10 @@
-package com.epam.horseraces.dao;
+package com.epam.horseraces.service;
 
 import com.epam.horseraces.domain.BreedEntity;
 
 import java.util.Collection;
 
-public interface BreedDao {
+public interface BreedService {
     Collection<BreedEntity> getAllBreeds();
     BreedEntity getRandomBreed();
 }
